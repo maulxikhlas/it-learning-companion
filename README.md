@@ -1,118 +1,93 @@
-# 🧭 IT Learning Companion
+# IT Learning Companion
 
-> Platform pembelajaran berbasis OOP untuk mahasiswa Teknologi Informasi — Roadmap Generator, Skills Assessment, dan Progress Dashboard.
+Proyek ini dibuat untuk memenuhi tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)** pada program studi **Pendidikan Teknologi Informasi**.
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?logo=tailwindcss)
-![OOP](https://img.shields.io/badge/Paradigma-OOP%2FPBO-blueviolet)
+Aplikasi ini merupakan platform berbasis web yang membantu mahasiswa TI dalam merencanakan jalur karir belajar (*learning path*), mengukur pemahaman awal materi teknologi melalui *assessment*, serta memantau perkembangan belajar.
 
 ---
 
-## 🎯 Fitur Utama
+## Fitur Utama
 
-| Fitur | Deskripsi |
-|---|---|
-| 🗺️ **IT Roadmap Generator** | Pilih jalur karir IT dan dapatkan roadmap belajar step-by-step |
-| 🎯 **Skills Assessment** | Quiz adaptif untuk mengetahui level skill IT kamu |
-| 📊 **Progress Dashboard** | Pantau XP, level, roadmap progress, dan badge pencapaian |
+- **Roadmap Belajar IT**: Menampilkan kurikulum dan langkah belajar bertahap untuk berbagai bidang TI (Web Development, Data Science, Cybersecurity, Mobile Development, DevOps, dan UI/UX).
+- **Skills Assessment**: Kuis penilaian mandiri untuk mengukur tingkat kemampuan awal mahasiswa pada berbagai topik dasar komputer dan pemrograman.
+- **Dashboard Progress**: Rekap capaian belajar, estimasi level kemampuan, poin pengalaman (XP), serta riwayat kuis yang telah diselesaikan.
 
 ---
 
-## 🏗️ Struktur OOP (Class Diagram)
+## Penerapan Konsep PBO (OOP)
 
-```
-User (base class)
-└── Learner (extends User)
-    ├── skills: Skill[]
-    ├── progress: Progress
-    ├── currentRoadmap: Roadmap
-    └── assessmentHistory: Assessment[]
+Logika data pada aplikasi ini diimplementasikan menggunakan class TypeScript di dalam direktori `lib/models.ts`:
 
-Roadmap
-└── steps: RoadmapStep[]
-
-Assessment
-└── questions: Question[]
-
-Progress
-└── badges: Badge[]
-```
+1. **Class & Object**: Pemodelan entitas sistem seperti `User`, `Learner`, `Roadmap`, `RoadmapStep`, `Assessment`, `Question`, `Skill`, dan `Progress`.
+2. **Inheritance (Pewarisan)**: Class `Learner` mewarisi properti dan method dari base class `User` menggunakan kata kunci `extends`.
+3. **Encapsulation (Enkapsulasi)**: Perhitungan nilai, manipulasi progress belajar, dan penambahan poin dikelola melalui method di dalam class terkait (misal: `getScore()`, `getCompletionPercentage()`, `addXP()`).
+4. **Data Modeling & Typing**: Penggunaan tipe data kustom TypeScript (`type`) untuk memvalidasi nilai atribut seperti `SkillLevel` dan `CareerPath`.
 
 ---
 
-## 📁 Struktur Folder
+## Struktur Folder
 
-```
+```text
 it-learning-companion/
 ├── app/
-│   ├── layout.tsx          # Root layout (Navbar + Footer)
-│   ├── page.tsx            # Homepage
+│   ├── layout.tsx          # Layout utama (Navbar, Konten, Footer)
+│   ├── page.tsx            # Halaman beranda
 │   ├── roadmap/
-│   │   ├── page.tsx        # Daftar career path
-│   │   └── [slug]/page.tsx # Detail roadmap per career
+│   │   ├── page.tsx        # Daftar pilihan jalur karir
+│   │   └── [slug]/page.tsx # Rincian tahapan roadmap
 │   ├── assessment/
-│   │   ├── page.tsx        # Landing assessment
-│   │   └── quiz/page.tsx   # Quiz interaktif
+│   │   ├── page.tsx        # Halaman informasi kuis
+│   │   └── quiz/page.tsx   # Halaman pengerjaan kuis
 │   └── dashboard/
-│       └── page.tsx        # Progress dashboard
+│       └── page.tsx        # Halaman ringkasan profil & statistik
 ├── components/
-│   ├── Navbar.tsx
-│   └── Footer.tsx
+│   ├── Navbar.tsx          # Komponen navigasi atas
+│   └── Footer.tsx          # Komponen footer halaman
 ├── lib/
-│   ├── models.ts           # Semua class OOP (User, Learner, Roadmap, dll)
-│   └── data.ts             # Data roadmap & soal assessment
+│   ├── models.ts           # Definisi class OOP
+│   └── data.ts             # Data statis roadmap dan bank soal
 ├── package.json
 └── tsconfig.json
 ```
 
 ---
 
-## 🚀 Cara Menjalankan
+## Prasyarat Lingkungan
 
-```bash
-# 1. Clone repository
-git clone https://github.com/maulxikhlas/it-learning-companion.git
-cd it-learning-companion
-
-# 2. Install dependencies
-npm install
-
-# 3. Jalankan development server
-npm run dev
-
-# 4. Buka di browser
-# http://localhost:3000
-```
+Pastikan perangkat sudah terpasang:
+- Node.js (versi LTS disarankan, minimal v18)
+- npm atau package manager sejenis
+- Git
 
 ---
 
-## 🎓 Konsep OOP yang Diterapkan
+## Cara Menjalankan Project
 
-| Konsep OOP | Implementasi |
-|---|---|
-| **Class & Object** | `User`, `Learner`, `Roadmap`, `Assessment`, `Skill`, `Badge`, `Progress` |
-| **Inheritance** | `Learner extends User` |
-| **Encapsulation** | Method `getScore()`, `getCompletionPercentage()`, `addXP()` |
-| **Abstraction** | Class `User` sebagai base abstrak untuk `Learner` |
-| **Interface / Type** | TypeScript `type` untuk `SkillLevel`, `CareerPath`, `BadgeType` |
+1. Clone repositori:
+   ```bash
+   git clone https://github.com/maulxikhlas/it-learning-companion.git
+   cd it-learning-companion
+   ```
 
----
+2. Pasang dependensi:
+   ```bash
+   npm install
+   ```
 
-## 🛠️ Tech Stack
+3. Jalankan server lokal:
+   ```bash
+   npm run dev
+   ```
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS
-- **Paradigma**: Object-Oriented Programming (OOP/PBO)
-
----
-
-## 📌 Tugas Proyek
-
-Mata kuliah **Pemrograman Berorientasi Objek (PBO)**  
-Tema: **Pendidikan Teknologi Informasi**
+4. Buka aplikasi di browser melalui alamat:
+   ```text
+   http://localhost:3000
+   ```
 
 ---
 
-*Dibuat dengan ❤️ menggunakan Next.js & TypeScript*
+## Teknologi yang Digunakan
+
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
