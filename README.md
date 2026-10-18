@@ -1,6 +1,6 @@
 # IT Learning Companion
 
-Proyek ini dibuat untuk memenuhi tugas mata kuliah **Pemrograman Berorientasi Objek (PBO)** pada program studi **Pendidikan Teknologi Informasi**.
+Proyek ini dibuat untuk memenuhi Tugas Akhir Semester mata kuliah **Pemrograman Berorientasi Objek (PBO)** pada program studi **Pendidikan Teknologi Informasi**.
 
 Aplikasi ini merupakan platform berbasis web yang membantu mahasiswa TI dalam merencanakan jalur karir belajar (*learning path*), mengukur pemahaman awal materi teknologi melalui *assessment*, serta memantau perkembangan belajar.
 
